@@ -16,7 +16,7 @@ function App() {
        <Route path='/calender' element={<Calender />} />
        <Route path='/edit/:id' element={<EditeNote />} />
        <Route path='/note/:id' element={<Note />} />
-       <Route path='/*' element={<Missing />} />
+       <Route path='*' element={<Missing />} />
 
 
      </Routes>
