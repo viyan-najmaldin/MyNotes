@@ -20,11 +20,11 @@ export default function Menu() {
 
       {/* Menu items */}
       <div className={`${isOpen ? "block" : "hidden"} mt-4`}>
-        <a href="#" className="block py-2">Home</a>
-        <a href="#" className="block py-2">About</a>
-        <a href="#" className="block py-2">Services</a>
-        <a href="#" className="block py-2">Pricing</a>
-        <a href="#" className="block py-2">Contact</a>
+        <a href="" className="block py-2">Home</a>
+        <a href="" className="block py-2">About</a>
+        <a href="" className="block py-2">Services</a>
+        <a href="" className="block py-2">Pricing</a>
+        <a href="" className="block py-2">Contact</a>
       </div>
     </nav>
   );
