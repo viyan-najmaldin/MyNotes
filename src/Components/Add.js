@@ -1,0 +1,22 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare  } from "@fortawesome/free-solid-svg-icons";
+
+
+
+const Add = () => {
+  return (
+    <>
+   <Link to='/note'>
+   <div className='hidden md:block m-10 pt-8 h-28 w-28 text-3xl text-gray-500 border-dashed border-2 rounded-2xl border-gray-500'> + </div>
+   </Link> 
+    <div className='block md:hidden fixed bottom-16 right-6 rounded-full bg-black p-4 '>
+                    <FontAwesomeIcon icon={faPenToSquare} className='text-white w-8 h-8' />
+
+    </div>
+    </>
+)
+}
+
+export default Add
