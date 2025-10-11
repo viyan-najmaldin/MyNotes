@@ -48,7 +48,7 @@ const Datess = ({ notes, setFilterr ,setResultFilter }) => {
 
     useEffect(() => {
     setResultFilter([...getFilteredNotes(notes, activeFilter)].reverse() );
-  }, [notes, activeFilter, getFilteredNotes, setResultFilter]);
+  }, [notes]);
 
 
   return (
