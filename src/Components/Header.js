@@ -7,7 +7,7 @@ import logo from '../assets/5624793.png'
 const Header = () => {
   return (
     
-    <div className='grid sm:grid-cols-3 grid-cols-2  my-4 	 '>
+    <div className='grid sm:grid-cols-3 grid-cols-2  my-4'>
     
     <div className='flex order-1'>
 <img src={logo} className='w-16 sm:mx-6 h-16'  alt='logo my-note-logo Notes'/>
