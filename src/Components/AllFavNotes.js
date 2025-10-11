@@ -21,7 +21,7 @@ const AllFavNotes = ({note}) => {
    <div>
              <ul className={` ${ note.length ? 'flex' : 'hidden' } sm:gap-4 gap-2 h-60  overflow-x-auto`} >
                  {/* <FavNote notes={note} /> */}
-{note.map(note=> <div> <li key={note.id}   ref={divRef} className={`${note.color === '#000' ? 'text-white' : 'text-black'} shadow-md mt-4 sm:w-56 w-32 sm:h-44 h-52 rounded-2xl`}
+{note.map(note=> <div> <li key={note.id}   ref={divRef} className={`${note.color === '#000' ? 'text-white' : 'text-black'} shadow-md mt-4 sm:w-56 w-36 sm:h-44 h-52 rounded-2xl`}
             style={{backgroundColor: note.color || '#cfcecc'}}
         >
       <Link to={`/edit/${note.id}`}>            
@@ -34,7 +34,7 @@ const AllFavNotes = ({note}) => {
                 {height < 200 ? 
                 (note.body.length > 200 ) ? `${note.body.slice(0,200)}...`: note.body
                 :
-                (note.body.length > 100) ? `${note.body.slice(0,105)}...`: note.body
+                (note.body.length > 100) ? `${note.body.slice(0,100)}...`: note.body
                 }     
                 </p>
 
