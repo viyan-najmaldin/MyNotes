@@ -27,7 +27,7 @@ const AllFavNotes = ({note}) => {
       <Link to={`/edit/${note.id}`}>            
          <div className='flex flex-col justify-between h-full'>
                 <div className='flex justify-between border-b mx-4 border-[#7A7A7A]'>    
-                      <h1 className='sm:text-base font-bold w-fit p-2 pl-0'>  {(note.title.length > 15 ) ? `${note.title.slice(0,15)}...`: note.title}  </h1>   
+                      <h1 className='sm:text-base text-sm font-bold w-fit p-2 pl-0'>  {(note.title.length > 15 ) ? `${note.title.slice(0,15)}...`: note.title}  </h1>   
                       <FontAwesomeIcon icon={faHeart} className='mt-3 text-red-500' />
                 </div>
                <p className='text-xs w-fit flex-1 mx-4 text-left'>
