@@ -28,10 +28,10 @@ const Notes = ({notes = []}) => {
                            ref={divRef} >
                              
              <Link to={`/edit/${note.id}`}>            
-                    <div className='grid sm:grid-cols-1 grid-cols-2   sm:flex flex-col justify-between h-full'>
+                    <div className='grid sm:grid-cols-1 grid-cols-2 sm:flex flex-col justify-between h-full'>
                             <div className='flex justify-between order-1  mx-4 sm:border-b sm:border-[#7A7A7A]'>    
-                                <h1   className='sm:text-base text-xs w-fit pt-2 pl-0'>  
-                                  {(note.title.length > 20 ) ? `${note.title.slice(0,20)}...`: note.title}
+                                <h1   className='sm:text-base  font-bold w-fit pt-2 pl-0'>  
+                                  {(note.title.length > 15 ) ? `${note.title.slice(0,15)}...`: note.title}
                                    </h1>   
                                 {  note.fav &&  <FontAwesomeIcon icon={faHeart} className='sm:block hidden mt-3 text-red-500' />}
                             </div>
