@@ -10,7 +10,7 @@ import Calender from './Components/Calender';
 import { useEffect, useState } from 'react';
 
 function App() {
-const savedNotes = localStorage.getItem('notee');
+const savedNotes = localStorage.getItem('mynoteys');
 const initialNotes = savedNotes ? JSON.parse(savedNotes) : [
   { 
     id: 1,
@@ -57,12 +57,15 @@ const [filterr , setFilterr] = useState(notes)
 useEffect(()=>{
 setResultFilter([...filterr].reverse())
 // console.log("result",resultFilter)
-console.log([JSON.parse(localStorage.getItem('notes'))])
-
+// console.log([JSON.parse(localStorage.getItem('mynotees'))])
+console.log(notes)
 }, [notes, filterr ])
 
   return (
     <div className="App">
+      { 
+      notes.map(n=>console.log(typeof(n.datetime) )
+      )}
      <Routes>
       {/* <DataProvider> */}
        <Route path='/' element={<Home search={search} setSearch={setSearch} notes={notes} setResultFilter={setResultFilter} resultFilter={resultFilter} setFilterr={setFilterr} />} />

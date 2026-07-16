@@ -18,13 +18,16 @@ const EditeNote = ({notes , setNotes}) => {
   const[colorr, setColorr ] =useState(color);
   const[fav, setFav ] =useState(false);
   const[textAlgin, setTextAlgin ] =useState('text-left');
+    const [showSave , setShowSave] =useState(false)
+   
+  
 
   const oneNote = notes.find((notte)=> String(notte.id) === (id))
 
    useEffect(() => {
       if (oneNote) {
-          setTitle(oneNote.title);
-          setBody(oneNote.body);
+          setTitle(oneNote.title?oneNote.title: '' );
+          setBody(oneNote.body?oneNote.body : '' );
           setColorr(oneNote.color)
           setFav(oneNote.fav)
           setTextAlgin(oneNote.textAlgin)
@@ -37,7 +40,7 @@ const EditeNote = ({notes , setNotes}) => {
     <div className='min-h-screen'
      style={{backgroundColor: colorr}}>
 
-  <form className='sm:pt-3 sm:px-4 '
+  <form className=' '
 
        onSubmit={(e)=>{
         e.preventDefault();
@@ -48,21 +51,22 @@ const EditeNote = ({notes , setNotes}) => {
      
         if(title || body) {
            setNotes(editnote)
-  localStorage.setItem('notee', JSON.stringify(editnote));
+  localStorage.setItem('mynoteys', JSON.stringify(editnote));
         }
          navigate(`/`)
         console.log(ID)
+
      }} >
 
 
-        <div className='sm:hidden block bg-gray-700 flex justify-between mb-4 pt-4  gap-4 h-16'>
-                      <div className='text-white rounded-2xl pt-2 px-4'
-                      onClick={()=>{
-                      setTitle('')
-                      setBody('')
-                      navigate(`/`) }} >
+    <div className=' bg-gray-700 flex justify-between  items-center  gap-4 py-3'>
+                      <div className='text-white rounded-2xl  px-4'
+                     onClick={()=>{
+                      body || title ? setShowSave(true) :
+                      navigate(-1)
+                      }} >
                         <FontAwesomeIcon icon={faAngleLeft} /> </div>
-                    <input className='rounded-2xl text-white px-4' value="Save" type='submit' />
+                    <input className='sm:hidden rounded-2xl text-white px-4' value="Save" type='submit' />
                 </div>
 
             <input className={ `${colorr === '#000' ? 'text-white' : 'text-black'} ${textAlgin} text-xl w-full bg-transparent border-none`}
@@ -82,13 +86,14 @@ const EditeNote = ({notes , setNotes}) => {
         
 
 
-  <div className='h-16 bg-gray-700 w-full fixed flex justify-between left-0 bottom-0 pt-3 p-2'>
+  <div className='h-16 bg-gray-700 w-full overflow-auto fixed flex justify-between left-0 bottom-0 pt-3 p-2'>
   
           <div className='flex gap-10'>
-        <div className='sm:ml-10 ml-4 flex gap-4'>
+        <div className='flex gap-5'>
+           <div title='Add to Favorite'>
                         {fav ? <FontAwesomeIcon onClick={()=>setFav(!fav)} icon={faHeart} className='mt-1 text-red-500 w-6 h-6 cursor-pointer' />
                           : <FontAwesomeIcon onClick={()=>setFav(!fav)} icon={faHeartRegular} className="mt-1 text-white w-6 h-6 cursor-pointer" />
-                        }
+                        }</div>
 
                     <div className='text-white flex gap-2'>
                       <FontAwesomeIcon onClick={()=>setTextAlgin('text-left')} className='cursor-pointer w-5 h-5 mt-1' icon={faAlignLeft} />
@@ -115,15 +120,37 @@ const EditeNote = ({notes , setNotes}) => {
 
                 <div className='hidden sm:flex gap-4 h-10'>
                       <div className='bg-gray-200 hover:bg-black hover:text-white rounded-2xl pt-2 px-4'
-                      onClick={()=>{
-                      setTitle('')
-                      setBody('')
-                      navigate(`/`) }} >
+                      onClick={()=>{setShowSave(true)}}  >
                         Cencel</div>
                     <input className='rounded-2xl bg-gray-200 px-6' value="Save" type='submit' />
                 </div>
       </div>
 
+{showSave &&  
+         <div className="sm:w-[40%] w-[60%] shadow-lg fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-center rounded-xl  border-2 border-slate-400">
+                               <div className="flex bg-gray-700 justify-end p-0 rounded-t-lg ">
+                                <button
+                                  // onClick={() => setShowDeleteId(null)}
+                                  className="text-xl font-bold text-white rounded-tr-lg p-1 px-3 hover:bg-red-700"
+                                >
+                                  ✕
+                                </button>
+                              </div>
+                           
+                             <div className="p-5 bg-white rounded-b-xl">
+                             <p>Do you want to save changes?</p>
+                              <div className="flex justify-center text-black mt-2 gap-2">
+                              <input className="bg-white border hover:bg-red-700 hover:text-white px-4 border-slate-400 p-1 rounded-xl" value="Save" type='submit' />
+                              <button className="bg-white border px-4 hover:bg-[#003049] hover:text-white border-slate-400 p-1 rounded-xl"
+                               onClick={()=>{
+                      setTitle('')
+                      setBody('')
+                      navigate(`/`) }}
+                              >No</button>
+                             </div>
+                               </div>
+                        </div>
+                }
 
 
        </form>

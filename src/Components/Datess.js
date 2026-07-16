@@ -48,14 +48,14 @@ const Datess = ({ notes, setFilterr ,setResultFilter, search }) => {
   };
 
   
-useEffect(() => {
+ useEffect(() => {
   let filtered = getFilteredNotes(notes, activeFilter);
 
   if (search.trim()) {
     filtered = filtered.filter(
       note =>
-        note.title.toLowerCase().includes(search.toLowerCase()) ||
-        note.body.toLowerCase().includes(search.toLowerCase())
+        note.title?.toLowerCase().includes(search.toLowerCase()) ||
+        note.body?.toLowerCase().includes(search.toLowerCase())
     );
   }
 
@@ -66,8 +66,8 @@ useEffect(() => {
   search,
   getFilteredNotes,
   setResultFilter,
-]);
-      
+]);  
+
   return (
     <div className="flex gap-2">
       {filters.map(filter => (
