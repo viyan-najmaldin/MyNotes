@@ -50,7 +50,7 @@ const initialNotes = savedNotes ? JSON.parse(savedNotes) : [
   } 
 ]
 const[notes ,setNotes ] = useState(initialNotes)
-
+const[search,setSearch] = useState("")
 const [resultFilter , setResultFilter] = useState([])
 const [filterr , setFilterr] = useState(notes)
 
@@ -65,7 +65,7 @@ console.log([JSON.parse(localStorage.getItem('notes'))])
     <div className="App">
      <Routes>
       {/* <DataProvider> */}
-       <Route path='/' element={<Home notes={notes} setResultFilter={setResultFilter} resultFilter={resultFilter} setFilterr={setFilterr} />} />
+       <Route path='/' element={<Home search={search} setSearch={setSearch} notes={notes} setResultFilter={setResultFilter} resultFilter={resultFilter} setFilterr={setFilterr} />} />
        <Route exact path='/note' element={<AddNote notes={notes} setNotes={setNotes} />} />
        <Route path='/calender' element={<Calender />} />
        <Route path='/edit/:id' element={<EditeNote notes={notes} setNotes={setNotes} />} />

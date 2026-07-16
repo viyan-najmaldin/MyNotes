@@ -4,7 +4,7 @@ import Menu from './Menu'
 // import Account from './Account'
 import logo from '../assets/5624793.png'
 
-const Header = () => {
+const Header = ({search, setSearch}) => {
   return (
     
     <div className='grid sm:grid-cols-3 grid-cols-2  my-4'>
@@ -15,7 +15,7 @@ const Header = () => {
 
     </div>
      
-<Search />
+<Search search={search} setSearch={setSearch} />
 <Menu />
       
   </div>

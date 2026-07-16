@@ -1,7 +1,7 @@
 import { useState ,useEffect , useCallback  } from 'react';
 import { startOfWeek, endOfWeek , startOfMonth, endOfMonth, isWithinInterval, parseISO,} from 'date-fns';
 
-const Datess = ({ notes, setFilterr ,setResultFilter }) => {
+const Datess = ({ notes, setFilterr ,setResultFilter, search }) => {
   const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'week', 'month'
 
   const filters = [
@@ -40,15 +40,26 @@ const Datess = ({ notes, setFilterr ,setResultFilter }) => {
     return notes;
   },[]);
 
+ 
   const handleFilterClick = filterId => {
     setActiveFilter(filterId);
     const filtered = getFilteredNotes(notes, filterId);
-    setFilterr(filtered); // ✅ pass the filtered notes, not the function itself
+    setFilterr(filtered); 
   };
-      useEffect(() => {
-        setResultFilter([...getFilteredNotes(notes, activeFilter)].reverse());
-      }, [notes, activeFilter, getFilteredNotes, setResultFilter]); 
 
+  
+   useEffect(() => {
+  let filtered = getFilteredNotes(notes, activeFilter);
+
+  if (search) {
+    filtered = filtered.filter(note =>
+      note.title.toLowerCase().includes(search.toLowerCase()) ||
+      note.body.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  setResultFilter(filtered.reverse());
+}, [notes, activeFilter, search, getFilteredNotes]);
       
   return (
     <div className="flex gap-2">
@@ -65,6 +76,7 @@ const Datess = ({ notes, setFilterr ,setResultFilter }) => {
           {filter.label}
         </button>
       ))}
+      {console.log(search)}
     </div>
   );
 };

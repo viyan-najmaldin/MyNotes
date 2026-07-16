@@ -69,7 +69,7 @@ const EditeNote = ({notes , setNotes}) => {
                   value={title} 
                   onChange={(e)=>{setTitle(e.target.value)}}
                   onSubmit={()=> textRef.current.focus()}
-                    type='text' placeholder='Type Title ...' required
+                    type='text' placeholder='Type Title ...' 
                />
                 
             <hr  className='border-t-2 border-gray-600 mx-2'/>
