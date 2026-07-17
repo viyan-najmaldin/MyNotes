@@ -2,7 +2,7 @@ import Add from './Add'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare , faHeart,faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 
 const Notes = ({notes = [], setNotes}) => {
 
