@@ -42,9 +42,9 @@ const AddNote = ({notes , setNotes}) => {
         setNotes(updatedNotes);
         localStorage.setItem("mynoteys", JSON.stringify(updatedNotes));
                 
-         const savedNotes = localStorage.getItem("mynoteys");
-         console.log(savedNotes);
-         console.log(JSON.parse(savedNotes));
+        //  const savedNotes = localStorage.getItem("mynoteys");
+        //  console.log(savedNotes);
+        //  console.log(JSON.parse(savedNotes));
         }
          navigate(`/`)
      }} >

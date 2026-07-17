@@ -4,7 +4,7 @@ import Fav from './Fav'
 import Notes from './Notes'
 import Datess from './Datess'
 
-const Container = ({notes, resultFilter , setFilterr , setResultFilter, search}) => {
+const Container = ({notes,setNotes, resultFilter , setFilterr , setResultFilter, search}) => {
 
   return (
     <div className='flex content-stretch'>
@@ -15,7 +15,7 @@ const Container = ({notes, resultFilter , setFilterr , setResultFilter, search})
                <div className='sm:m-10 sm:mt-6 mt-6 m-2'>
           <h1 className='text-left text-slate-700 font-semibold text-lg'>All Notes {resultFilter? resultFilter.length : 0}</h1>
          <Datess search={search}  notes={notes} setFilterr={setFilterr} setResultFilter={setResultFilter}  />
-        <Notes notes={resultFilter} />
+        <Notes notes={resultFilter} setNotes={setFilterr} />
                   </div>
 
 

@@ -2,10 +2,25 @@ import Add from './Add'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare , faHeart,faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from 'react';
 
+const Notes = ({notes = [], setNotes}) => {
 
-const Notes = ({notes = []}) => {
-  
+  const [trash, setTrash]=useState([])
+
+const onDelete = (id) => {
+  const deletedNote = notes.find((n) => n.id === id);
+
+  const updatedTrash = [...trash, deletedNote];
+  setTrash(updatedTrash);
+
+  const updatedNotes = notes.filter((n) => n.id !== id);
+  setNotes(updatedNotes);
+
+  localStorage.setItem("mytrash", JSON.stringify(updatedTrash));
+  localStorage.setItem("mynoteys", JSON.stringify(updatedNotes));
+};
+
   return (
     <div>
          <ul className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] gap-2 sm:gap-4'>                
@@ -33,9 +48,12 @@ const Notes = ({notes = []}) => {
                             </p>  
                  </Link>    
                          <div className=' gap-2 flex sm:right-auto justify-end items-end  text-right mb-4  mx-4 '>
-                                  <span className='  text-[#7A7A7A] sm:text-xs text-[8px] sm:right-24 sm:top-24 absolute right-2 top-2'>{note.datetime}</span> 
-                                  <FontAwesomeIcon icon={faTrash} className='text-sm sm:text-red-900/50 hover:text-red-700' />   
-                                  <FontAwesomeIcon icon={faPenToSquare} className= 'sm:block hidden opacity-50 hover:opacity-100' />  
+                                  <span className='  text-[#7A7A7A] sm:text-xs text-[8px]  sm:left-4 sm:top-24 absolute r top-2'>{note.datetime}</span> 
+                                  <FontAwesomeIcon icon={faTrash} onClick={()=>{onDelete(note.id)}} className='text-sm sm:text-red-900/50 hover:text-red-700' />   
+                                 <Link  to={`/edit/${note.id}`}>  
+                                  <FontAwesomeIcon icon={faPenToSquare} 
+                                  className= 'sm:block hidden opacity-50 hover:opacity-100' />  
+                                  </Link>
                                   
                            </div> 
                            
