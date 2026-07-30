@@ -17,7 +17,7 @@ const Aside = () => {
         </div>
 
         <Link to='/calender'> <FontAwesomeIcon icon={faCalendarDays} /> Calender </Link>
-       <div> <FontAwesomeIcon icon={faTrash} /> Trash</div>
+       <Link to='trash'> <FontAwesomeIcon icon={faTrash} /> Trash</Link>
     </div>
   )
 }

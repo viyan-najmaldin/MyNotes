@@ -8,8 +8,11 @@ const Home = ({notes ,
    resultFilter ,
    setFilterr ,
     setResultFilter,
-     search,
-    setSearch}) => {
+    search,
+    setSearch,
+    trash, 
+    setTrash
+  }) => {
   return (
     <div className='sm:mx-16 md:mx-6 mx-4'>
       <Header search={search} setSearch={setSearch} />
@@ -22,7 +25,10 @@ const Home = ({notes ,
      setNotes={setNotes} 
      setResultFilter={setResultFilter}  
      resultFilter={resultFilter} 
-     setFilterr={setFilterr} />
+     setFilterr={setFilterr} 
+     trash={trash} 
+     setTrash={setTrash}
+     />
 
       
     </div>

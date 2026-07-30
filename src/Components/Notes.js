@@ -2,30 +2,30 @@ import Add from './Add'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare , faHeart,faTrash } from "@fortawesome/free-solid-svg-icons";
-import {  useState } from 'react';
 
-const Notes = ({notes = [], setNotes}) => {
 
-  const [trash, setTrash]=useState([])
-
+const Notes = ({notes = [], setNotes, trash, setTrash, setFilterr }) => {
+ 
 const onDelete = (id) => {
   const deletedNote = notes.find((n) => n.id === id);
-
   const updatedTrash = [...trash, deletedNote];
-  setTrash(updatedTrash);
-
+  console.log('updated',updatedTrash)
+  setTrash([ ...trash, deletedNote]);
   const updatedNotes = notes.filter((n) => n.id !== id);
   setNotes(updatedNotes);
-
-  localStorage.setItem("mytrash", JSON.stringify(updatedTrash));
+  setFilterr(updatedNotes)
+  localStorage.setItem("h", JSON.stringify(updatedTrash));
   localStorage.setItem("mynoteys", JSON.stringify(updatedNotes));
+  // console.log(updatedTrash);
+  // console.log(Array.isArray(trash)) 
 };
 
   return (
     <div>
-         <ul className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] gap-2 sm:gap-4'>                
-                   <Add />         
-        {notes.map(note=>  <li 
+         <ul className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]  gap-2 sm:gap-4'>                
+                   <Add />   
+
+        {!notes.length? <div className='w-full pb-60 pt-20 text-sm text-gray-400 self-center'>Empty</div> :  notes.map(note=>  <li 
                           key={note.id} 
                           className={`${note.color === '#000' ? 'text-white' : 'text-black'} border border-slate-300 shadow  mt-2 sm:w-50 w-full sm:h-32 h-16 rounded-2xl`}
                           style={{backgroundColor: note.color || '#cfcecc'}} 

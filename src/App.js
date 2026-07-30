@@ -8,6 +8,7 @@ import EditeNote from './Components/EditeNote';
 import Calender from './Components/Calender';
 // import { DataProvider } from './context/DataContext'
 import { useEffect, useState } from 'react';
+import Trash from './Components/Trash';
 
 function App() {
 const savedNotes = localStorage.getItem('mynoteys');
@@ -54,6 +55,14 @@ const[search,setSearch] = useState("")
 const [resultFilter , setResultFilter] = useState([])
 const [filterr , setFilterr] = useState(notes)
 
+const trashNotes = localStorage.getItem('h');
+const allTrash = trashNotes ? JSON.parse(trashNotes) : []
+  const [trash, setTrash]=useState(allTrash)
+// console.log(Array.isArray(JSON.parse(localStorage.getItem("h"))));
+  // console.log((allTrash)) 
+  console.log(trash);
+console.log(Array.isArray(trash));
+
 useEffect(()=>{
 setResultFilter([...filterr].reverse())
 // console.log("result",resultFilter)
@@ -63,17 +72,21 @@ console.log(notes)
 
   return (
     <div className="App">
-      { 
-      notes.map(n=>console.log(typeof(n.datetime) )
-      )}
+    
      <Routes>
       {/* <DataProvider> */}
-       <Route path='/' element={<Home search={search} setSearch={setSearch} notes={notes} setResultFilter={setResultFilter} resultFilter={resultFilter} setFilterr={setFilterr} />} />
+       <Route path='/' element={<Home search={search} setSearch={setSearch} 
+                                      setNotes={setNotes} notes={notes} 
+                                      setResultFilter={setResultFilter} 
+                                      resultFilter={resultFilter} 
+                                      setFilterr={setFilterr}
+                                      trash={trash} setTrash={setTrash} />} />
        <Route exact path='/note' element={<AddNote notes={notes} setNotes={setNotes} />} />
        <Route path='/calender' element={<Calender />} />
        <Route path='/edit/:id' element={<EditeNote notes={notes} setNotes={setNotes} />} />
        <Route path='/note/:id' element={<Note />} />
        <Route path='*' element={<Missing />} />
+       <Route path='trash' element={<Trash notes={notes} setNotes={setNotes} trash={trash} setTrash={setTrash}/>} />
      {/* </DataProvider>     */}
      </Routes>
     </div>

@@ -80,7 +80,7 @@ const EditeNote = ({notes , setNotes}) => {
           
             <textarea ref={textRef} className={`${colorr === '#000' ? 'text-white' : 'text-black'} ${textAlgin} w-full bg-transparent border-none mb-24 min-h-dvh`}
                       value={body} onChange={(e)=>{setBody(e.target.value)}} type='text' placeholder='Type here...'
-                    required
+                    
             />
         
         
