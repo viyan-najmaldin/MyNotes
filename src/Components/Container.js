@@ -18,7 +18,8 @@ const Container = ({notes,
               <Aside trash={trash} setTrash={setTrash} />
         <div className='sm:bg-[#F5F5F5] sm:border sm:border-slate-400 sm:shadow-lg rounded-2xl sm:w-[80%] w-full h-fit'>
             <Fav notes={notes} /> 
-            
+            {console.log(resultFilter)}
+{console.log(resultFilter.map(note => note.id))}
                <div className='sm:m-10 sm:mt-6  mt-6 m-2'>
           <h1 className='text-left text-slate-700 font-semibold text-lg'>All Notes {resultFilter? resultFilter.length : 0}</h1>
          <Datess search={search}  notes={notes} setFilterr={setFilterr} setResultFilter={setResultFilter}  />

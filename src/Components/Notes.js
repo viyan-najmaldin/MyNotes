@@ -9,7 +9,7 @@ const Notes = ({notes = [], setNotes, trash, setTrash, setFilterr }) => {
 const onDelete = (id) => {
   const deletedNote = notes.find((n) => n.id === id);
   const updatedTrash = [...trash, deletedNote];
-  console.log('updated',updatedTrash)
+  // console.log('updated',updatedTrash)
   setTrash([ ...trash, deletedNote]);
   const updatedNotes = notes.filter((n) => n.id !== id);
   setNotes(updatedNotes);
@@ -22,6 +22,7 @@ const onDelete = (id) => {
 
   return (
     <div>
+      {console.log(notes)}
          <ul className='grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]  gap-2 sm:gap-4'>                
                    <Add />   
 

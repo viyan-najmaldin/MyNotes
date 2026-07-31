@@ -30,13 +30,15 @@ const AddNote = ({notes , setNotes}) => {
   <form className=' '
        onSubmit={(e)=>{
         e.preventDefault();
-        const id = notes.length ? (notes[notes.length-1].id)+1 :1 
+        const id =
+  notes.length > 0 ? Math.max(...notes.map(note => note.id)) + 1
+    : 1;
         // console.log((notes.length))
         console.log((notes.id))
          const datetime = format(new Date(),  'yyyy-MM-dd HH:mm')
         const addNote = { id, title, body , color:colorr , fav , textAlgin , datetime}
         if(title || body){ 
-           setNotes([ ...notes,addNote])
+          //  setNotes([ ...notes,addNote])
            const updatedNotes = [...notes, addNote];
 
         setNotes(updatedNotes);

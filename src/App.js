@@ -29,7 +29,10 @@ const initialNotes = savedNotes ? JSON.parse(savedNotes) : [
      color: '#D8AEF6',
      fav: true,
      textAlgin: 'text-left',
-     datetime: '2025-10-4 04:20'
+     datetime: '2025-10-4 04:20',
+     deleted: false,
+     trashDate: ''
+
   }, 
    { 
     id: 3,
@@ -60,14 +63,14 @@ const allTrash = trashNotes ? JSON.parse(trashNotes) : []
   const [trash, setTrash]=useState(allTrash)
 // console.log(Array.isArray(JSON.parse(localStorage.getItem("h"))));
   // console.log((allTrash)) 
-  console.log(trash);
-console.log(Array.isArray(trash));
+  // console.log(trash);
+// console.log(Array.isArray(trash));
 
 useEffect(()=>{
 setResultFilter([...filterr].reverse())
 // console.log("result",resultFilter)
 // console.log([JSON.parse(localStorage.getItem('mynotees'))])
-console.log(notes)
+// console.log(notes)
 }, [notes, filterr ])
 
   return (
