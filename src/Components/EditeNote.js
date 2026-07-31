@@ -51,7 +51,7 @@ const EditeNote = ({notes , setNotes}) => {
      
         if(title || body) {
            setNotes(editnote)
-  localStorage.setItem('mynoteys', JSON.stringify(editnote));
+  localStorage.setItem('mynoteysvv', JSON.stringify(editnote));
         }
          navigate(`/`)
         console.log(ID)

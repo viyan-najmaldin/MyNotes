@@ -24,7 +24,7 @@ const onRestore = (id) => {
   setTrash(updatedTrash);
 
   localStorage.setItem("h", JSON.stringify(updatedTrash));
-  localStorage.setItem("mynoteys", JSON.stringify(updatedNotes));
+  localStorage.setItem("mynoteysvv", JSON.stringify(updatedNotes));
 };
 
   return (

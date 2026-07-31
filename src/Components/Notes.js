@@ -15,7 +15,7 @@ const onDelete = (id) => {
   setNotes(updatedNotes);
   setFilterr(updatedNotes)
   localStorage.setItem("h", JSON.stringify(updatedTrash));
-  localStorage.setItem("mynoteys", JSON.stringify(updatedNotes));
+  localStorage.setItem("mynoteysvv", JSON.stringify(updatedNotes));
   // console.log(updatedTrash);
   // console.log(Array.isArray(trash)) 
 };

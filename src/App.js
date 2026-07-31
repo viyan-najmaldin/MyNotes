@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import Trash from './Components/Trash';
 
 function App() {
-const savedNotes = localStorage.getItem('mynoteys');
+const savedNotes = localStorage.getItem('mynoteysvv');
 const initialNotes = savedNotes ? JSON.parse(savedNotes) : [
   { 
     id: 1,

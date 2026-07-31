@@ -42,7 +42,7 @@ const AddNote = ({notes , setNotes}) => {
            const updatedNotes = [...notes, addNote];
 
         setNotes(updatedNotes);
-        localStorage.setItem("mynoteys", JSON.stringify(updatedNotes));
+        localStorage.setItem("mynoteysvv", JSON.stringify(updatedNotes));
                 
         //  const savedNotes = localStorage.getItem("mynoteys");
         //  console.log(savedNotes);
